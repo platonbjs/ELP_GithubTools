@@ -2,13 +2,13 @@ import requests
 import json
 import tabulate
 import math
-import git
+#import git
 TOKEN='token'
 USERNAME='user'
 BASE_URL='https://api.github.com/'
 SEARCH_URL='search/repositories'
 FORK_URL='repos/'
-def search_repos(keyword,updated='2019-01-01',total_items=1000):
+def search_repos(keyword,updated='2019-11-01',total_items=1000):
 
     SEARCH_URL='search/repositories'
     QUERY_URL='?q='+keyword
@@ -41,12 +41,12 @@ def search_repos(keyword,updated='2019-01-01',total_items=1000):
 def create_fork(owner,repo_name):
     query=BASE_URL+FORK_URL+owner+'/'+repo_name+'/'+'forks'
     req = requests.post(query,auth=(USERNAME, TOKEN))
-def add_license(repo_name):
-    git.Git
-    pass
+#def add_license(repo_name):
+#    git.Git
+#    pass
 def pull_request(repo):
     pass
 def main():
-    #search_repos('Hola')
-    create_fork('','-')
+    search_repos('opensource')
+    #create_fork('','-')
 main()
