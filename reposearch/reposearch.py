@@ -3,8 +3,6 @@ import json
 import tabulate
 import math
 #import git
-TOKEN='token'
-USERNAME='user'
 BASE_URL='https://api.github.com/'
 SEARCH_URL='search/repositories'
 UPDATED = '2019-11-01'
@@ -43,6 +41,6 @@ def search_repos(keyword,updated=UPDATED,per_page=PER_PAGE,num_items=NUM_ITEMS, 
     print(tabulate.tabulate(rows, header))
     return result
 def main():
-    search_repos('project')
-    #create_fork('','-')
+    keyword = input("Please enter your keyword to search: ")
+    search_repos(keyword)
 main()
