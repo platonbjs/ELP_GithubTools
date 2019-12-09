@@ -2,15 +2,17 @@ import requests
 import json
 import tabulate
 import math
-#import git
+# Variables de busqueda de GitHub
 BASE_URL='https://api.github.com/'
 SEARCH_URL='search/repositories'
-UPDATED = '2019-11-01'
 QUERY_URL = '?q='
+NUM_PAGES_STR = '&page='
+# Variables para definir nuestra busqueda
+UPDATED = '2019-11-01'
 PER_PAGE=100
 NUM_ITEMS=100
 STARS=100
-NUM_PAGES_STR = '&page='
+
 def search_repos(keyword,updated=UPDATED,per_page=PER_PAGE,num_items=NUM_ITEMS, stars=STARS):
     query_url=QUERY_URL+keyword
     per_page_str='&per_page='+str(per_page)
@@ -23,7 +25,6 @@ def search_repos(keyword,updated=UPDATED,per_page=PER_PAGE,num_items=NUM_ITEMS, 
     for page in range(1,num_pages+1):
         num_pages_str=NUM_PAGES_STR+str(page)
         query=BASE_URL+SEARCH_URL+query_url+updated_str+stars_str+per_page_str+num_pages_str
-        print(query)
         req = requests.get(query)
         repo_dict = req.json()['items']
         for i in repo_dict:
